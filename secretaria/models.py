@@ -41,8 +41,8 @@ class disciplina(models.Model):
     
     cod_disc=models.IntegerField(primary_key=True, null=False)
     masp=models.ForeignKey(professor, null=False, on_delete=models.CASCADE)
-    cargaHP=models.IntegerField
-    cargaHT=models.IntegerField
+    cargahp=models.IntegerField()
+    cargaht=models.IntegerField()
     periodo=models.IntegerField(choices=per.choices)
     nomed=models.CharField(max_length=40, null=False)
 
@@ -58,7 +58,7 @@ class orienta(models.Model):
     matricula_o=models.ForeignKey(aluno, null=False, on_delete=models.CASCADE, primary_key=True)
 
 
-    def __str__(self) -> str:
+    def __int__(self) -> str:
         return self.matricula_o
     class Meta:
         managed=False
@@ -69,8 +69,8 @@ class cursar(models.Model):
     cod_c=models.ForeignKey(disciplina, on_delete=models.CASCADE, primary_key=True, null=False)
     cod_a=models.ForeignKey(aluno, on_delete=models.CASCADE)
 
-    def __str__(self) -> str:
-        return self.matricula_o
+    def __int__(self) -> str:
+        return self.cod_a
     class Meta:
         managed=False
         db_table='cursar'
