@@ -1,6 +1,5 @@
 from django.db import models
 
-
 sexo =     [('M', 'Masculino'), 
             ('F', 'Feminino')]
 
@@ -58,8 +57,8 @@ class orienta(models.Model):
     matricula_o=models.ForeignKey(aluno, null=False, on_delete=models.CASCADE, primary_key=True)
 
 
-    def __int__(self) -> str:
-        return self.matricula_o
+    def __str__(self) -> str:
+        return f'{self.cod_o} & {self.matricula_o}'
     class Meta:
         managed=False
         db_table='orienta'
@@ -69,8 +68,8 @@ class cursar(models.Model):
     cod_c=models.ForeignKey(disciplina, on_delete=models.CASCADE, primary_key=True, null=False)
     cod_a=models.ForeignKey(aluno, on_delete=models.CASCADE)
 
-    def __int__(self) -> str:
-        return self.cod_a
+    def __str__(self) -> str:
+        return f'{self.cod_a} & {self.cod_c}'
     class Meta:
         managed=False
         db_table='cursar'
